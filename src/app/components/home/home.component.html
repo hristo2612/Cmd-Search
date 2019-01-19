@@ -2,8 +2,10 @@
   <!-- <h1 class="title">
     {{ 'PAGES.HOME.TITLE' | translate }}
   </h1> -->
-
-  <form (submit)="optionSelected($event)" class="example-form">
+  <button class="settings-button" mat-button color="success">
+      <mat-icon>settings</mat-icon>
+    </button>
+  <form style="display: inline-block;" (submit)="optionSelected($event)" class="example-form">
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Run.." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete (optionSelected)="barOptionSelected($event)" #auto="matAutocomplete">
@@ -13,4 +15,8 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
+  <button class="add-button" mat-button color="success">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  
 </div>

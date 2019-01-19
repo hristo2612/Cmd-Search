@@ -11,7 +11,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   myControl = new FormControl();
-  options: string[] = ['Stack Search', 'Github Search', 'BG-License Branch'];
+  options: string[] = ['Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch','Stack Search', 'Github Search', 'BG-License Branch'];
   filteredOptions: Observable<string[]>;
   filteredArrayOptions: any[] = [];
 
