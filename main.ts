@@ -1,10 +1,14 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+const os = require('os');
+const storage = require('electron-json-storage');
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+storage.setDataPath(os.tmpdir());
 
 function createWindow() {
 
@@ -15,8 +19,8 @@ function createWindow() {
   win = new BrowserWindow({
     x: size.width / 2 - size.width / 4,
     y: 0,
-    width: size.width / 2,
-    height: size.height / 10 + 100
+    width: size.width / 2.3,
+    height: 390
   });
 
   if (serve) {

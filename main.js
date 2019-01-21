@@ -3,9 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
+var os = require('os');
+var storage = require('electron-json-storage');
 var win, serve;
 var args = process.argv.slice(1);
 serve = args.some(function (val) { return val === '--serve'; });
+storage.setDataPath(os.tmpdir());
 function createWindow() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -13,8 +16,8 @@ function createWindow() {
     win = new electron_1.BrowserWindow({
         x: size.width / 2 - size.width / 4,
         y: 0,
-        width: size.width / 2,
-        height: size.height / 10 + 100
+        width: size.width / 2.3,
+        height: 390
     });
     if (serve) {
         require('electron-reload')(__dirname, {
