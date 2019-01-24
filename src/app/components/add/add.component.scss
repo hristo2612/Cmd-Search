@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  margin-top: 17px;
+  justify-content: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  .form-title, .form-command {
+    padding-top: 2px;
+    min-width: 300px;
+    max-width: 690px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  .back-button {
+      margin: 20px 30px 20px 20px;
+  }
+
+  .check-button {
+      margin: 20px 20px 20px 30px;
+  }
+
+}

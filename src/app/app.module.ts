@@ -18,6 +18,9 @@ import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddComponent } from './components/add/add.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SelectableInputComponent } from './components/selectable-input/selectable-input.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -57,6 +60,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { CommandRunnerService } from './providers/command-runner.service';
+import { StorageService } from './providers/storage.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -67,7 +72,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    AddComponent,
+    SettingsComponent,
+    SelectableInputComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +128,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService, CommandRunnerService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

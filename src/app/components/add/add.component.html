@@ -1,0 +1,22 @@
+<div class="container">
+  <button
+    (click)="onBackButton()"
+    class="back-button"
+    mat-icon-button
+    color="success"
+  >
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <div>
+    <app-selectable-input [inputPlaceholder]="'Title'" class="input-title" [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit"></app-selectable-input>
+    <app-selectable-input [inputPlaceholder]="'Command'" class="input-command"  [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit"></app-selectable-input>
+  </div>
+  <button
+    (click)="onSave()"
+    class="check-button"
+    mat-icon-button
+    color="success"
+  >
+    <mat-icon>check</mat-icon>
+  </button>
+</div>
