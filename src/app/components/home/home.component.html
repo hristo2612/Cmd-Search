@@ -2,21 +2,15 @@
   <!-- <h1 class="title">
     {{ 'PAGES.HOME.TITLE' | translate }}
   </h1> -->
-  <button class="settings-button" mat-button color="success">
-      <mat-icon>settings</mat-icon>
-    </button>
-  <form style="display: inline-block;" (submit)="optionSelected($event)" class="example-form">
-    <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Run.." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete (optionSelected)="barOptionSelected($event)" #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-  <button class="add-button" mat-button color="success">
+  <button [ngClass]="{'display-none': !isFilterActive}" class="cancel-button" (click)="clearField()" mat-icon-button color="success">
+      <mat-icon>cancel</mat-icon>
+  </button>
+  <app-selectable-input [inputPlaceholder]="'Run..'" [options]="options" (onFiltered)="onFiltered($event)" class="input-command"  [onSelectedOption]="barOptionSelected()" [onFormSubmit]="optionSelected()"></app-selectable-input>
+  <button (click)="onAddItem($event)" class="add-button" mat-icon-button color="success">
     <mat-icon>add_circle</mat-icon>
+  </button>
+  <button (click)="onSettingsOpen($event)" class="settings-button" mat-icon-button color="success">
+      <mat-icon>settings</mat-icon>
   </button>
   
 </div>

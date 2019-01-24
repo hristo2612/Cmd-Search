@@ -1,7 +1,7 @@
 .container {
   //height: 100%;
   display: flex;
-  margin-top: 20px;
+  margin-top: 17px;
   //align-items: center;
   justify-content: center;
 
@@ -17,6 +17,7 @@
 
   
   .example-form {
+    padding-top: 2px;
     min-width: 150px;
     max-width: 500px;
     width: 100%;
@@ -32,6 +33,14 @@
 
   .settings-button {
     margin: 20px 50px 20px 20px;
+  }
+
+  .cancel-button {
+    margin: 20px 10px 20px 20px;
+  }
+
+  .display-none {
+    visibility: hidden;
   }
 
 }
