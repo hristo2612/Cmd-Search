@@ -32,7 +32,15 @@ function createWindow() {
             slashes: true
         }));
     }
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
+    electron_1.globalShortcut.register('Alt+J', function () {
+        if (win.isMinimized()) {
+            win.show();
+        }
+        else {
+            win.minimize();
+        }
+    });
     // Emitted when the window is closed.
     win.on('closed', function () {
         // Dereference the window object, usually you would store window

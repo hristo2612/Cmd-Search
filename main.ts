@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 const os = require('os');
@@ -36,7 +36,15 @@ function createWindow() {
     }));
   }
 
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
+
+  globalShortcut.register('Alt+J', () => {
+    if ( win.isMinimized() ) {
+      win.show();
+    } else {
+      win.minimize();
+    }
+  });
 
   // Emitted when the window is closed.
   win.on('closed', () => {
