@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -11,12 +11,15 @@ import { CommandRunnerService } from '../../providers/command-runner.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, AfterViewInit {
   titleControl = new FormControl();
   cmdControl = new FormControl();
   titles: string[] = ['Stack Search', 'Github Search', 'BG-License Branch'];
   titlesObservable: Observable<string[]>;
   titleArray: any[] = [];
+  titleOptions: any[] = [];
+  commandOptions: any[] = [];
+  message: string = '';
 
   commands: string[] = ['ls', 'dir', 'cd ..'];
   cmdObservable: Observable<string[]>;
@@ -36,13 +39,21 @@ export class AddComponent implements OnInit {
       startWith(''),
       map(value => this._cmdFilter(value))
     );
-    this.storage.addCommand('ls', 'fuckinShiet', (error, data) => {
-      console.log(error, 'data', data);
-      this.storage.getAllCommands((error, data) => {
-        if (error) throw error;
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.storage.getAllCommands().subscribe((value) => {
+        let data = value.data;
         console.log(data);
+        for (let option in data) {
+          if (data.hasOwnProperty(option)){
+            this.commandOptions = [...this.commandOptions, data[option].command];
+            this.titleOptions = [...this.titleOptions, option];
+          }
+        }
       });
-    });
+    }, 420);
   }
 
   private _titleFilter(value: string): string[] {
@@ -70,11 +81,14 @@ export class AddComponent implements OnInit {
   onSave() {
     let title = (<HTMLInputElement>document.querySelector('.input-title input')).value;
     let command = (<HTMLInputElement>document.querySelector('.input-command input')).value;
-    this.cmdRunner.run(command);
-    this.storage.addCommand(title, command, (err, data) => {
+    //this.cmdRunner.run(command);
+    this.storage.addCommand(title, command).subscribe((data) => {
       console.log(data);
-      console.log(err);
     });
+    this.message = 'Saved..';
+    setTimeout(() => {
+      this.message = '';
+    }, 2600);
   }
 
   onSelected() {

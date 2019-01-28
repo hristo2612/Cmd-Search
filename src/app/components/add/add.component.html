@@ -8,8 +8,8 @@
     <mat-icon>chevron_left</mat-icon>
   </button>
   <div>
-    <app-selectable-input [inputPlaceholder]="'Title'" class="input-title" [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit"></app-selectable-input>
-    <app-selectable-input [inputPlaceholder]="'Command'" class="input-command"  [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit"></app-selectable-input>
+    <app-selectable-input [inputPlaceholder]="'Title'" class="input-title" [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit" [options]="titleOptions"></app-selectable-input>
+    <app-selectable-input [inputPlaceholder]="'Command'" class="input-command"  [onSelectedOption]="onSelected" [onFormSubmit]="onSubmit" [options]="commandOptions"></app-selectable-input>
   </div>
   <button
     (click)="onSave()"
@@ -19,4 +19,7 @@
   >
     <mat-icon>check</mat-icon>
   </button>
+  <span style="font-size: 11px; font-weight: bold; color:crimson">
+    {{message}}
+  </span>
 </div>

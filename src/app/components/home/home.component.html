@@ -5,7 +5,7 @@
   <button [ngClass]="{'display-none': !isFilterActive}" class="cancel-button" (click)="clearField()" mat-icon-button color="success">
       <mat-icon>cancel</mat-icon>
   </button>
-  <app-selectable-input [inputPlaceholder]="'Run..'" [options]="options" (onFiltered)="onFiltered($event)" class="input-command"  [onSelectedOption]="barOptionSelected()" [onFormSubmit]="optionSelected()"></app-selectable-input>
+  <app-selectable-input [inputPlaceholder]="'Run..'" [options]="options" (onFiltered)="onFiltered($event)" class="input-command"  [onSelectedOption]="barOptionSelected" [onFormSubmit]="optionSelected"></app-selectable-input>
   <button (click)="onAddItem($event)" class="add-button" mat-icon-button color="success">
     <mat-icon>add_circle</mat-icon>
   </button>
