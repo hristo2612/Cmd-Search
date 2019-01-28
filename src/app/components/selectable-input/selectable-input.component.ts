@@ -11,8 +11,8 @@ import {map, startWith} from 'rxjs/operators';
 export class SelectableInputComponent implements OnInit, OnChanges {
   @Input() inputPlaceholder: string;
   @Input() options: string[] = ['Stack Search', 'Github Search', 'Open Sth'];
-  @Input() onFormSubmit: void;
-  @Input() onSelectedOption: void;
+  @Input() onFormSubmit: any;
+  @Input() onSelectedOption: any;
   @Output() onFiltered = new EventEmitter<any>();
 
   formControl = new FormControl();

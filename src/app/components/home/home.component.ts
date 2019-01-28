@@ -68,11 +68,11 @@ export class HomeComponent implements OnInit {
     console.log(document.querySelector('input').value);
   }
 
-  onAddItem() {
+  onAddItem(e) {
     this.router.navigate(['/add']);
   }
 
-  onSettingsOpen() {
+  onSettingsOpen(e) {
     this.router.navigate(['/settings']);
   }
 
